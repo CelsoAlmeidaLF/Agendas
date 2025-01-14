@@ -1,6 +1,4 @@
-﻿using Systekna.Scrum.Repository;
-
-namespace Systekna.Scrum.Core;
+﻿namespace Systekna.Scrum.Core;
 
 public class Task
 {

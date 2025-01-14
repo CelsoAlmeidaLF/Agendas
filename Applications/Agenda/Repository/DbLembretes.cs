@@ -1,4 +1,7 @@
-﻿namespace Systekna.Agenda.One;
+﻿using Systekna.Agenda.Repository.Data;
+using Systekna.Agenda.One;
+
+namespace Systekna.Agenda.Repository;
 
 public class DbLembretes : DataFake, IDbLembretes
 {

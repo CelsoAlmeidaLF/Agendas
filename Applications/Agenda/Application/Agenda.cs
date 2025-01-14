@@ -1,4 +1,6 @@
-﻿
+﻿using Systekna.Agenda.Repository;
+using Systekna.Agenda.Repository.Interface;
+
 namespace Systekna.Agenda.One;
 
 public class Agenda : IDbAgenda

@@ -1,4 +1,6 @@
-﻿namespace Systekna.Agenda.One;
+﻿using Systekna.Agenda.Repository.Data;
+
+namespace Systekna.Agenda.One;
 
 public interface IDbTarefa : IRepository<Tarefa>
 {

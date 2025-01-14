@@ -1,4 +1,4 @@
-﻿namespace Systekna.Agenda.One;
+﻿namespace Systekna.Agenda.Repository.Data;
 
 public interface IRepository<Entity>
 {

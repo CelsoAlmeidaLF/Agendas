@@ -1,4 +1,6 @@
-﻿namespace Systekna.Agenda.One;
+﻿using Systekna.Agenda.One;
+
+namespace Systekna.Agenda.Repository.Data;
 
 public class DataFake
 {

@@ -1,4 +1,7 @@
-﻿namespace Systekna.Agenda.One;
+﻿using Systekna.Agenda.One;
+using Systekna.Agenda.Repository.Data;
+
+namespace Systekna.Agenda.Repository;
 
 public class DbNotas : DataFake, IDbNotas
 {
