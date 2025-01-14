@@ -18,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scrum\Scrum.csproj" />
+    <ProjectReference Include="..\Applications\Agenda\Agenda.csproj" />
+    <ProjectReference Include="..\Applications\Scrum\Scrum.csproj" />
   </ItemGroup>
 
   <ItemGroup>
