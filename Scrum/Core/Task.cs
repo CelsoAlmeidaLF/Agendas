@@ -26,22 +26,3 @@ public class Task
         return StartDate.AddDays(DurationDays);
     }
 }
-
-public class Sprint : DbScrum
-{
-    public int SprintNumber { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-
-    public Sprint(int sprintNumber, DateTime startDate, int durationDays, List<Task> tasks)
-        : base(tasks)
-    {
-        SprintNumber = sprintNumber;
-        StartDate = startDate;
-        EndDate = startDate.AddDays(durationDays);
-    }
-
-    public override void Add(Task newTask) => base.Add(newTask);
-    public override void Remove(Task task) => base.Remove(task);
-    public override IEnumerable<Task> GetAll() => base.GetAll();
-}
