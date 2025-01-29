@@ -1,12 +1,10 @@
-﻿using Systekna.Scrum.Core;
-using Core = Systekna.Scrum.Core;
+﻿using Scrum.Core;
 
 namespace Scrum.Repository.Interfaces;
 
-public interface IDbSprint
+public interface IDbSprint : IQueryTask<Sprint>
 {
-    void AddSprint(Sprint sprint);
-    void AddTask(int idSprint, Core.Task task);
-    void UpdateTask(int idSprint, int idTask, string status);
-    void DelTask(int idSprint, Core.Task task);
+    void Add(Sprint sprint);
+    void AddEpico(int idSprint, Epicos? epicos);
+    void Remove(Sprint sprint);
 }

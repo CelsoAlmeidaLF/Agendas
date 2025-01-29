@@ -1,6 +1,5 @@
-﻿using Scrum.Repository.Interfaces;
-using Systekna.Scrum.Core;
-using Core = Systekna.Scrum.Core;
+﻿using Scrum.Core;
+using Scrum.Repository.Interfaces;
 
 namespace Scrum.Application.Interfaces;
 

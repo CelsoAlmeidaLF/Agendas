@@ -1,21 +1,31 @@
-﻿namespace Systekna.Scrum.Core;
+﻿namespace Scrum.Core;
 
-public class Sprint
+public class Sprint : EntityBase
 {
-    public int SprintNumber { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    public List<Task> Tasks { get; }
-    public string Titulo { get; set; }
-    public string Descrição { get; set; }
+    public List<Epicos?> Epicos { get; }
 
-    public Sprint(int sprintNumber, string titulo, string descrição, DateTime startDate, int durationDays)
+    public Sprint(
+        int sprintNumber, string titulo, string descrição, DateTime startDate, int durationDays)
     {
-        SprintNumber = sprintNumber;
-        Titulo = titulo;
-        Descrição = descrição;
+        ID = sprintNumber;
+        Title = titulo;
+        Description = descrição;
         StartDate = startDate;
         EndDate = startDate.AddDays(durationDays);
-        Tasks = new List<Task>();
+        Epicos = new();
+    }
+
+    public Sprint Add(Epicos? epico)
+    {
+        Epicos.Add(epico);
+        return this;
+    }
+
+    public Sprint Clear()
+    {
+        Epicos.Clear();
+        return this;
     }
 }

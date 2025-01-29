@@ -1,4 +1,5 @@
 ﻿using Scrum.Application.Interfaces;
+using Scrum.Core;
 using Scrum.Repository.Interfaces;
 using Systekna.Scrum.Repository;
 
@@ -6,11 +7,11 @@ namespace Systekna.Scrum.Application;
 
 public class BbSprint : DbSprint, IBbSprint, IDbSprint
 {
-    public BbSprint() : base()
-    {
-    }
+    private IDbSprint _db;
 
-    public static IBbSprint Create() 
-        => new BbSprint();
+    public BbSprint()
+        => _db = new DbSprint();
 
+    public BbSprint(List<Sprint> sprints) : base(sprints)
+        => _db = new DbSprint();
 }

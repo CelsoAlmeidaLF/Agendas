@@ -1,11 +1,11 @@
-﻿using Core = Systekna.Scrum.Core;
+﻿using Scrum.Core;
 
 namespace Scrum.Repository.Interfaces;
 
-public interface IQueryTask
+public interface IQueryTask<Entity>
 {
-    IEnumerable<Core.Task> GetAll();
-    Core.Task? GetByID(int id);
+    IEnumerable<Entity> GetAll();
+    Entity? GetByID(int id);
     int GetByStatusDone();
     int Count { get; }
 }

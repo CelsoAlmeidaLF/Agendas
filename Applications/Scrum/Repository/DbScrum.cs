@@ -1,43 +1,43 @@
-﻿using Scrum.Repository.Interfaces;
-using Systekna.Scrum.Core;
+﻿using Scrum.Core;
+using Scrum.Repository;
+using Scrum.Repository.Interfaces;
+using System.Threading.Tasks;
 
 namespace Systekna.Scrum.Repository;
 
-public class DbScrum : IDbScrum
+public class DbScrum : DbFake, IDbScrum
 {
     #region ...
-    private List<Core.Task> _data;
-    public int Count => _data.Count;
-    public DbScrum(List<Core.Task> tasks) => _data = tasks;
-    public DbScrum() => _data = new List<Core.Task>();
+    public DbScrum(List<Epicos> tasks) => _epicos = tasks;
+    public DbScrum() => _epicos = new List<Epicos>();
     #endregion
+    
+    public int Count => _epicos.Count;
 
-    public virtual void Add(Core.Task newTask) 
-        => _data.Add(newTask);
+    public virtual void Add(Epicos newTask) 
+        => _epicos.Add(newTask);
 
-    public virtual IEnumerable<Core.Task> GetAll() 
-        => _data;
+    public virtual void AddTask(int idEpico, ToDo task) 
+        => _epicos[idEpico].Tasks.Add(task);
 
-    public virtual void Update(int id, string status)
+    public virtual IEnumerable<Epicos> GetAll() 
+        => _epicos;
+
+    public virtual void Update(int id, ItemStatus status)
     {
-        Core.Task? task = GetByID(id);
+        Epicos? task = GetByID(id);
         if (task != null)
             task.Status = status;
     }
 
-    public virtual Core.Task? GetByID(int id) 
-        => _data.Find(t => t.Id == id);
+    public virtual Epicos? GetByID(int id) 
+        => _epicos.Find(t => t.ID == id);
 
     public virtual int GetByStatusDone() 
-        => _data.FindAll(t => t.Status == "Done").Count;
+        => _epicos.FindAll(t => t.Status == ItemStatus.Done).Count;
 
-    public virtual void Remove(Core.Task task) 
-        => _data.Remove(task);
-
-    public bool IsValidSprint(Sprint? sprint)
-    {
-        if (sprint is null) return false;
-        _data = sprint.Tasks;
-        return true;
-    }
+    public virtual void Remove(Epicos task) 
+        => _epicos.Remove(task);
+    public void ClearTask(int idEpico)
+        => _epicos[idEpico].Tasks.Clear();
 }

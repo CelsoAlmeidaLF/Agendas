@@ -1,42 +1,40 @@
-﻿using Scrum.Repository.Interfaces;
-using Systekna.Scrum.Core;
+﻿using Scrum.Core;
+using Scrum.Repository;
+using Scrum.Repository.Interfaces;
 
 namespace Systekna.Scrum.Repository;
 
-public class DbSprint : DbScrum, IDbSprint
+public class DbSprint : DbFake, IDbSprint
 {
-    private readonly List<Sprint> _sprints;
+    #region ...
 
     public DbSprint() 
-        => _sprints = new List<Sprint>();
+        => _sprints = new();
 
     public DbSprint(List<Sprint> sprints) 
         => _sprints = sprints;
 
-    public virtual void AddSprint(Sprint sprint)
+    #endregion
+
+    public int Count => _sprints.Count;
+
+    public virtual void Add(Sprint sprint) 
         => _sprints.Add(sprint);
 
-    public virtual void AddTask(int idSprint, Core.Task task)
-    {
-        var sprint = _sprints.Find(s => s.SprintNumber == idSprint);
-        if (IsValidSprint(sprint))
-            base.Add(task);
+    public void AddEpico(int idSprint, Epicos? epicos) 
+        => _sprints[idSprint].Epicos.Add(epicos ?? new Epicos(0, _sprints[0].Title, _sprints[0].Description, ItemStatus.ToDo));
 
+    public virtual IEnumerable<Sprint> GetAll()
+        => _sprints;
+
+    public virtual Sprint? GetByID(int id)
+        => _sprints.Find(t => t.ID == id);
+
+    public int GetByStatusDone()
+    {
+        return 0;
     }
 
-    public virtual void UpdateTask(int idSprint, int idTask, string status)
-    {
-        var sprint = _sprints.Find(s => s.SprintNumber == idSprint);
-        if (IsValidSprint(sprint))
-            base.Update(idTask, status);
-
-    }
-
-    public virtual void DelTask(int idSprint, Core.Task task)
-    {
-        var sprint = _sprints.Find(s => s.SprintNumber == idSprint);
-        if (IsValidSprint(sprint))
-           base.Remove(task);
-
-    }
+    public virtual void Remove(Sprint sprint) 
+        => _sprints.Remove(sprint);
 }
