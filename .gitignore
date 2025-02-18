@@ -363,3 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /Console/ClsAgenda/ConsoleAgenda.csproj
 /UiAgenda/UiAgenda.csproj
+/Console/ClsScrum/ConsoleTeste.csproj
+/UiWfAgenda/UiWfAgenda.csproj
+/UiWfAgenda
+/UiAgenda
